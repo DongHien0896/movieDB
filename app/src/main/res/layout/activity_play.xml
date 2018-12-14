@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.framgia.hien.moviedb.screen.play.PlayViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linear_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image_ic_youtube_back"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_36"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:gravity="center"
+                    android:onClick="@{viewModel::onBackClicked}"
+                    android:src="@drawable/ic_arrow_back_white_24dp"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <TextView
+                    android:id="@+id/text_youtube_toolbar_title"
+                    style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:maxLines="1"
+                    android:text="@string/app_name"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_ic_youtube_back"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="@dimen/dp_16" />
+
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtube_player"
+            android:layout_width="match_parent"
+            app:onYouTubeInitializedListener="@{viewModel.youtubeField}"
+            android:layout_height="@dimen/dp_250"
+            app:layout_constraintTop_toBottomOf="@id/linear_toolbar" />
+
+        <TextView
+            android:id="@+id/text_youtube_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@{viewModel.movieObservableField.originalTitle}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:textColor="@color/color_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/youtube_player"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginLeft="@dimen/dp_24" />
+
+        <ImageView
+            android:id="@+id/image_ic_youtube_item_rating"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_8"
+            android:src="@drawable/ic_star_yellow_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_youtube_title"
+            android:layout_marginLeft="@dimen/dp_24" />
+
+        <TextView
+            android:id="@+id/text_youtube_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@string/tittle_rating"
+            app:layout_constraintStart_toEndOf="@id/image_ic_youtube_item_rating"
+            app:layout_constraintTop_toBottomOf="@+id/text_youtube_title"
+            android:layout_marginLeft="@dimen/dp_4" />
+
+        <TextView
+            android:id="@+id/text_youtube_rating_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="@{String.valueOf(viewModel.movieObservableField.voteCount)}"
+            app:layout_constraintStart_toEndOf="@+id/text_youtube_rating"
+            app:layout_constraintTop_toTopOf="@+id/text_youtube_rating"
+            android:layout_marginLeft="@dimen/dp_8" />
+
+        <ImageView
+            android:id="@+id/image_ic_youtube_release"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_4"
+            android:src="@drawable/ic_date_range_grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_ic_youtube_item_rating"
+            android:layout_marginLeft="@dimen/dp_24"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/text_youtube_release"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_4"
+            android:text="@string/tittle_realease"
+            app:layout_constraintStart_toEndOf="@id/image_ic_youtube_release"
+            app:layout_constraintTop_toTopOf="@+id/image_ic_youtube_release"
+            android:layout_marginLeft="@dimen/dp_4" />
+
+        <TextView
+            android:id="@+id/text_youtube_release_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="@{viewModel.movieObservableField.releaseDate}"
+            app:layout_constraintStart_toEndOf="@+id/text_youtube_release"
+            app:layout_constraintTop_toTopOf="@+id/image_ic_youtube_release"
+            android:layout_marginLeft="@dimen/dp_8" />
+
+        <View
+            android:id="@+id/view_youtube_separator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_youtube_release_value"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginLeft="@dimen/dp_8" />
+
+        <TextView
+            android:id="@+id/text_youtube_more_trailers_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_24"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/tittle_more_trailer"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:textColor="@color/color_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_youtube_separator" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_youtube"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/dp_8"
+            android:paddingStart="@dimen/dp_8"
+            app:recyclerAdapter="@{viewModel.trailerAdapter}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_youtube_more_trailers_title" />
+
+        <ProgressBar
+            android:id="@+id/progress_trailer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_212"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

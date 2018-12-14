@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.hien.moviedb.screen.detail.ItemCastViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="@{viewModel::onItemClicked}"
+        android:padding="@dimen/dp_10">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/image_cast"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_120"
+            app:imageUrl="@{viewModel.observable.profilePath}"
+            app:civ_border_width="@dimen/dp_2"
+            app:civ_border_color="@color/color_red"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_marginStart="@dimen/dp_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.007"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/text_name_character"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/color_dark"
+            android:text="@{viewModel.observable.character}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_cast"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/text_name_cast"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:gravity="center"
+            android:textColor="@color/color_dark"
+            android:text="@{viewModel.observable.name}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name_character"
+            tools:text="@string/app_name" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

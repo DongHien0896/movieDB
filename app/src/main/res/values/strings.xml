@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">MovieDB</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_setting">Setting</string>
+    <string name="tittle_genres">Genres</string>
+    <string name="tittle_most_popular">Most popular</string>
+    <string name="tittle_now_playing">Now playing</string>
+    <string name="tittle_upcoming">Upcoming</string>
+    <string name="tittle_top_rated">Top rated</string>
+    <string name="text_example">Example</string>
+    <string name="tittle_realease">Release date:</string>
+    <string name="tittle_rating">Rating: </string>
+    <string name="tittle_trailer">Trailer Offical</string>
+    <string name="tittle_casts">Casts</string>
+    <string name="tittle_production_companies">Production Companies</string>
+    <string name="message_dialog_no_internet">Please connect internet!</string>
+    <string name="tittle_more_trailer">More Trailer</string>
+    <string name="tittle_birth_day">Birthday:</string>
+    <string name="tittle_date_realease">Realease</string>
+    <string name="tittle_related_movies">Related movies</string>
+    <string name="tittle_popular">Popular:</string>
+    <string name="tittle_headquater">Headquater:</string>
+    <string name="tittle_origin_country">Origin Country: </string>
+    <string name="tittle_favorite">List Favorite Movie:</string>
+    <string name="tittle_syn">Synchronize</string>
+    <string name="tittle_rate_app">Rate me</string>
+    <string name="tittle_info">Infomation of app</string>
+    <string name="tittle_help">Guide and help</string>
 </resources>

@@ -1,19 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.framgia.hien.moviedb.screen.main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</android.support.constraint.ConstraintLayout>
+        <variable
+            name="mainViewModel"
+            type="com.framgia.hien.moviedb.screen.main.MainViewModel" />
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/swiperefresh"
+        android:layout_height="match_parent">
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/color_red"
+                app:contentInsetEnd="@dimen/dp_0"
+                app:contentInsetStart="@dimen/dp_0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/image_toolbar_movie_icon"
+                        android:layout_width="@dimen/dp_48"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginStart="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_circle_movie" />
+
+                    <TextView
+                        android:id="@+id/text_toolbar_title"
+                        style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginStart="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:maxLines="1"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/image_toolbar_movie_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+            <FrameLayout
+                android:id="@+id/frame_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0"
+                app:layout_constraintBottom_toTopOf="@id/navigation_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/navigation_bottom"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_0"
+                android:layout_marginStart="@dimen/dp_0"
+                android:background="?android:attr/windowBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:menu="@menu/navigation"
+                app:onNavigationItemSelected="@{mainViewModel::onNavigationItemSelected}" />
+
+            <ProgressBar
+                android:id="@+id/progress_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_250"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>
